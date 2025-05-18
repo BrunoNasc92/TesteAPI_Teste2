@@ -1,96 +1,56 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
-                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+Testes Automatizados de API com Java, Rest Assured, JUnit 5 e Allure
 
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>br.com.api.testes</groupId>
-    <artifactId>teste-api</artifactId>
-    <version>1.0-SNAPSHOT</version>
 
-    <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <allure.version>2.13.9</allure.version>
-        <junit.jupiter.version>5.10.2</junit.jupiter.version>
-        <restassured.version>5.4.0</restassured.version>
-    </properties>
+##Visão Geral
+Este projeto realiza testes automatizados de API REST utilizando Java 11, o framework Rest Assured, JUnit 5 para orquestração dos testes, e Allure Reports para a geração de relatórios visuais e detalhados.
+A API utilizada nos testes é a pública JSONPlaceholder, ideal para experimentação e prototipagem de testes em REST APIs.
 
-    <dependencies>
-        <!-- Rest Assured -->
-        <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>rest-assured</artifactId>
-            <version>${restassured.version}</version>
-            <scope>test</scope>
-        </dependency>
 
-        <!-- JSONPath -->
-        <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>json-path</artifactId>
-            <version>${restassured.version}</version>
-            <scope>test</scope>
-        </dependency>
+##Tecnologias Utilizadas
+Java 11
+Maven
+JUnit 5
+Rest Assured 5.4.0
+Allure JUnit 5 e Allure Rest-Assured
+SLF4J (para logs)
 
-        <!-- JUnit 5 -->
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>${junit.jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
+##Estrutura do Projeto
+src
+├── test
+    └── java
+        └── br.com.api.testes
+            └── ApiTests.java
+pom.xml
+README.md
 
-        <!-- Allure JUnit 5 -->
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-junit5</artifactId>
-            <version>${allure.version}</version>
-            <scope>test</scope>
-        </dependency>
+##Executar os Testes
+mvn clean test
 
-        <!-- Allure Rest Assured -->
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-rest-assured</artifactId>
-            <version>${allure.version}</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+##Gerar relatórios
+allure serve allure-results
 
-    <build>
-        <plugins>
-            <!-- Plugin Surefire para rodar testes JUnit 5 -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M9</version>
-                <configuration>
-                    <useModulePath>false</useModulePath>
-                    <systemPropertyVariables>
-                        <!-- Define onde o Allure vai salvar os resultados -->
-                        <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
-                    </systemPropertyVariables>
-                </configuration>
-            </plugin>
+##Dependencias
+O projeto utiliza as seguintes bibliotecas e ferramentas:
 
-            <!-- Plugin do Allure para gerar relatório -->
-            <plugin>
-                <groupId>io.qameta.allure</groupId>
-                <artifactId>allure-maven</artifactId>
-                <version>2.11.2</version>
-                <executions>
-                    <execution>
-                        <id>allure-report</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
+Dependência	         Versão	  Descrição
+Java	                  11	  Linguagem principal para automação
+Maven	                  3.8+	  Gerenciador de dependências e build
+JUnit 5 (junit-jupiter)	5.10.2	  Framework de testes
+Rest Assured	         5.4.0	  Framework para automação de testes de API
+Allure JUnit 5	         2.13.9	  Integração do Allure com JUnit 5
+Allure Rest Assured	2.13.9	  Integração do Allure para capturar logs do Rest Assured
+Maven Surefire Plugin	3.0.0-M9	  Plugin do Maven para execução dos testes
+Allure Maven Plugin	2.11.2	  Geração dos relatórios Allure
 
-</project>
+##Dica
+Após clonar o projeto execute o mvn clean install que irá instalar todas as depencias
+
+
+##Todos os testes incluem anotações do Allure como:
+@Epic, @Feature, @Story
+@Description para documentar cada caso
+@Severity para indicar o impacto do teste
+
+
+##Autor
+Bruno S. Nascimento | QA Engineer | Automatação de Testes Backend/API
