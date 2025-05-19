@@ -1,0 +1,33 @@
+name: Testes Automatizados de API
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-api:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🔄 Checkout do código
+        uses: actions/checkout@v3
+
+      - name: ☕ Configurar Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+
+      - name: 📦 Instalar dependências do Maven
+        run: mvn clean install -DskipTests
+
+      - name: ✅ Executar testes
+        run: mvn test
+
+      - name: 💾 Publicar artefato Allure Results
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-results
+          path: target/allure-results
