@@ -1,0 +1,14 @@
+# Ignorar pastas geradas automaticamente
+target/
+*.class
+*.log
+
+# Ignorar relatórios temporários
+allure-report/
+allure-results/
+*.html
+
+# Ignorar IDEs
+.vscode/
+.idea/
+*.iml
