@@ -28,14 +28,15 @@ Automatizar a verificação de múltiplos endpoints de uma API de exemplo, cobri
 
 ## Estrutura dos Testes
 src/test/java/br/com/api/testes/
-├── ApiTest.java # Testes com POST, PUT e DELETE
-├── ApiErrosTest.java # Testes simulando erros HTTP: 400, 401, 403, 404, 500
+ApiTest.java # Testes com POST, PUT e DELETE
+ApiErrosTest.java # Testes simulando erros HTTP: 400, 401, 403, 404, 500
 
+## Organização dos Testes
 TesteAPI_Teste2/
-├── .github/workflows/ci.yml # Pipeline GitHub Actions
-├── pom.xml # Dependências Maven
-├── src/test/java/... # Código dos testes
-├── Evidencia/TesteAPI_Teste2.pdf # Evidência técnica em PDF
+.github/workflows/ci.yml # Pipeline GitHub Actions
+pom.xml # Dependências Maven
+src/test/java/... # Código dos testes
+Evidencia/TesteAPI_Teste2.pdf # Evidência técnica em PDF
 
 ## Como executar localmente
 
