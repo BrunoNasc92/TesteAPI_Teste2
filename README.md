@@ -1,42 +1,90 @@
-Testes Automatizados de API com Java + Rest Assured
-Este projeto tem como objetivo validar endpoints de uma API de exemplo utilizando Java, Rest Assured e JUnit 5, com geração de relatório visual via Allure Report.
+## Projeto de Testes Automatizados de API REST
 
-Objetivos da Avaliação
-Tarefa 1:
-Criar testes para um endpoint de exemplo, com validações de:
+Este repositório demonstra a implementação de testes automatizados para validação de uma API REST utilizando:
 
-Status code
-Headers
-Corpo da resposta (body)
-Tarefa 2:
-Automatizar testes de múltiplos endpoints com diferentes métodos HTTP - TestGetPosts, TestPostCreate, TestPutUpdate e TestDeletePost, 400 (BadRequest) 401 (Unauthorized), 403 (Forbiden), 404 (NotFound) e 500 (Server Error) validando:
+- **Java 11**
+- **Rest Assured**
+- **JUnit 5**
+- **Allure Report**
+- **GitHub Actions** (CI/CD)
 
-Status codes esperados
-Headers relevantes
-Estrutura e conteúdo do corpo da resposta
-Relatório:
-Relatório visual detalhado com os resultados da execução dos testes.
 
-🛠️ Tecnologias Utilizadas
-Java 11
-Apache Maven
-Rest Assured 5.3.1
-JUnit 5
-Allure Report
+## Objetivo
 
-🚀 Como Executar os Testes
-Clone o repositório ou copie os arquivos para sua máquina:
-git clone https://github.com/BrunoNasc92/TesteAPI_Teste2.git
-cd teste-api
+Automatizar a verificação de múltiplos endpoints de uma API de exemplo, cobrindo tanto cenários **positivos** quanto **negativos**, com geração de **relatórios visuais** e execução contínua via **CI/CD**.
 
-Compile e execute:
+
+## Tecnologias e Ferramentas
+
+| Tecnologia      | Versão       |
+|-----------------|--------------|
+| Java            | 11           |
+| Maven           | 3.9.x        |
+| Rest Assured    | 5.4.0        |
+| JUnit Jupiter   | 5.10.2       |
+| Allure          | 2.13.9       |
+| GitHub Actions  | CI/CD        |
+
+
+## Estrutura dos Testes
+src/test/java/br/com/api/testes/
+├── ApiTestTarefa1.java # Testes positivos e negativos (GET e status 404)
+├── ApiTestTarefa2.java # Testes com POST, PUT e DELETE
+├── ApiErrosTest.java # Testes simulando erros HTTP: 400, 401, 403, 404, 500
+
+testeApi/
+├── .github/workflows/ci.yml # Pipeline GitHub Actions
+├── pom.xml # Dependências Maven
+├── src/test/java/... # Código dos testes
+├── Evidencia/TesteAPI_Teste2.pdf # Evidência técnica em PDF
+
+## Como executar localmente
+
+1. Clone o projeto:
+
+Bash:
+clone https://github.com/BrunoNasc92/TesteAPI_Teste2.git
+cd TesteAPI_Teste2
+
+2. Execute os testes:
 mvn clean test
 
-Relatório:
+3. Gere o relatório Allure localmente:
 allure serve target/allure-results
 
-Utilizamos a API pública https://reqres.in, ideal para simulação de testes com métodos GET, POST, PUT e DELETE.
+Testes Implementados
+✅ Cenários Positivos
+Validação de retorno 200 OK e dados válidos da API https://reqres.in
 
-👨‍💻 Autor
-Bruno Nascimento
-QA Sênior | Automação de Testes
+Teste de GET, POST, PUT, DELETE com validação de corpo, status e headers
+
+🚫 Cenários Negativos (Simulação de erros)
+Utilizando https://httpstat.us para validar tratamento de:
+
+| Código | Situação Simulada     |
+| ------ | --------------------- |
+| 400    | Bad Request           |
+| 401    | Unauthorized          |
+| 403    | Forbidden             |
+| 404    | Not Found             |
+| 500    | Internal Server Error |
+
+CI/CD com GitHub Actions
+A cada push ou pull request na branch main, a pipeline é executada automaticamente:
+⚙️ Compila o projeto
+🧪 Roda os testes com Maven
+💾 Publica os artefatos do Allure (target/allure-results)
+
+Veja a aba Actions do repositório para histórico de execuções.
+
+ Evidência em PDF
+ Clique aqui para visualizar o reltório em PDF
+
+
+## Conclusão Técnica
+A automação de testes foi conduzida com sucesso, validando os principais métodos HTTP e simulações de erros. O projeto está integrado ao GitHub Actions, o que permite rastreabilidade, repetibilidade e confiança no ciclo de entrega contínua (CI/CD).
+
+
+
+
+
