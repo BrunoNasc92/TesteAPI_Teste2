@@ -1,56 +1,56 @@
 package br.com.api.testes;
 
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
+import io.restassured.specification.RequestSpecification;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
 public class ApiErrosTest {
 
     @BeforeAll
     public static void setup() {
-        RestAssured.baseURI = "https://httpstat.us"; // Usado para simular respostas HTTP
+        RestAssured.baseURI = "https://httpstat.us";
+    }
+
+    private RequestSpecification request() {
+        return RestAssured.given().filter(new AllureRestAssured());
     }
 
     @Test
     public void testBadRequest400() {
-        when()
-            .get("/400") // Simula Bad Request
-        .then()
-            .statusCode(400);
+        request()
+            .when().get("/400")
+            .then().statusCode(400);
     }
 
     @Test
     public void testUnauthorized401() {
-        when()
-            .get("/401") // Simula Unauthorized
-        .then()
-            .statusCode(401);
+        request()
+            .when().get("/401")
+            .then().statusCode(401);
     }
 
     @Test
     public void testForbidden403() {
-        when()
-            .get("/403") // Simula Forbidden
-        .then()
-            .statusCode(403);
+        request()
+            .when().get("/403")
+            .then().statusCode(403);
     }
 
     @Test
     public void testNotFound404() {
-        when()
-            .get("/404") // Simula Not Found
-        .then()
-            .statusCode(404);
+        request()
+            .when().get("/404")
+            .then().statusCode(404);
     }
 
     @Test
     public void testInternalServerError500() {
-        when()
-            .get("/500") // Simula Internal Server Error
-        .then()
-            .statusCode(500);
+        request()
+            .when().get("/500")
+            .then().statusCode(500);
     }
 }
